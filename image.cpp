@@ -56,7 +56,9 @@ bool image::loadFile(const std::string& filename)
     {
         int r, g, b; //create the integrs
         file >> r >> g >> b; // extraction operator to assign values to the integers
-        pixels[i].set(r, g, b); // set the i-th pixels color values to those values
+        pixels[i].r = r; // set the i-th pixels color values to those values
+        pixels[i].g = g;
+        pixels[i].b = b;
     }
 
     return true;
@@ -72,6 +74,6 @@ void image::saveFile(const std::string& filename) const
 
     for (const pixel& p : pixels) 
     {
-        file << p.getR() << " " << p.getG() << " " << p.getB() << "\n"; // this should work. output wont look the same as here examples, but the file will work. it just prints each pixels color values on its own line. example shows four per line. not required from what i can tell.
+        file << p.r << " " << p.g << " " << p.b << "\n"; // this should work. output wont look the same as here examples, but the file will work. it just prints each pixels color values on its own line. example shows four per line. not required from what i can tell.
     }
 }
