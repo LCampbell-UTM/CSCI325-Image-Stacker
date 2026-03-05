@@ -5,8 +5,17 @@
 
 #include "image.h"
 
+// constructors //////////////////////////////////////////////////////////
+/**
+ * @brief Default constructor initializes an empty image.
+ */
 image::image() : width(0), height(0), maxColor(255) {}
 
+/**
+ * @brief Construct an image with specified width and height.
+ * @param width Image width
+ * @param height Image height
+ */
 image::image(int width, int height)
 {
     this->width = width;
@@ -15,30 +24,60 @@ image::image(int width, int height)
     pixels.resize(width * height);
 }
 
-// getters
+// getters ///////////////////////////////////////////////////
+/**
+ * @brief Get the width of the image.
+ * @return Image width
+ */
 int image::getWidth() const 
 { 
     return width; 
 }
+/**
+ * @brief Get the height of the image.
+ * @return Image height
+ */
 int image::getHeight() const 
 { 
     return height; 
 }
+/**
+ * @brief Get the maximum color value of the image.
+ * @return Maximum color
+ */
 int image::getMaxColor() const 
 { 
     return maxColor; 
 }
 
+// pixel accessors //////////////////////////////////////////////////////////
+/**
+ * @brief Access a pixel for modification.
+ * @param x X-coordinate
+ * @param y Y-coordinate
+ * @return Reference to the pixel at (x, y)
+ */
 pixel& image::at(int x, int y) // modifiable
 {
     return pixels[y * width + x]; // y * width gets us the right row, x selects the desired pixel in that row. has to multiply because its stored in a vector. so a new row will start every width number of pixels
 }
 
+/**
+ * @brief Access a pixel for reading only.
+ * @param x X-coordinate
+ * @param y Y-coordinate
+ * @return Const reference to the pixel at (x, y)
+ */
 const pixel& image::at(int x, int y) const // non-modifiable
 {
     return pixels[y * width + x];
 }
 
+/**
+ * @brief Load a P3 PPM image file.
+ * @param filename File to load
+ * @return true if successful, false otherwise
+ */
 bool image::loadFile(const std::string& filename) 
 {
     std::ifstream file(filename);
@@ -50,7 +89,7 @@ bool image::loadFile(const std::string& filename)
 
     std::string line;
 
-    std::getline(file, line);
+    std::getline(file, line); // 
 
     while (std::getline(file, line)) 
     {
@@ -67,7 +106,7 @@ bool image::loadFile(const std::string& filename)
 
     for (int i = 0; i < width * height; i++) 
     {
-        int r, g, b; //create the integrs
+        int r, g, b; //create the integers
         file >> r >> g >> b; // extraction operator to assign values to the integers
         pixels[i].r = r; // set the i-th pixels color values to those values
         pixels[i].g = g;
