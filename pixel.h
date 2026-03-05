@@ -1,7 +1,12 @@
+// Authors: Lane Campbell and Blaine Smith
+// File: pixel.cpp
+// Last Modified: 2026-03-05
+// Purpose: Implement the pixel struct for representing individual pixels in the image
+
 #ifndef PIXEL_H
 #define PIXEL_H
 
-struct pixel
+struct pixel // pixel struct, requirement checked off
 {
     int r;
     int g;

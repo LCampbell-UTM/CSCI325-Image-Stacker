@@ -1,6 +1,19 @@
+// Authors: Lane Campbell and Blaine Smith
+// File: image.cpp
+// Last Modified: 2026-03-05
+// Purpose: Implement the image class for loading, saving, and manipulating images
+
 #include "image.h"
 
 image::image() : width(0), height(0), maxColor(255) {}
+
+image::image(int width, int height)
+{
+    this->width = width;
+    this->height = height;
+    maxColor = 255;
+    pixels.resize(width * height);
+}
 
 // getters
 int image::getWidth() const 

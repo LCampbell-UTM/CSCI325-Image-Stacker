@@ -1,3 +1,8 @@
+// Authors: Lane Campbell and Blaine Smith
+// File: pixel.cpp
+// Last Modified: 2026-03-05
+// Purpose: Implement the pixel struct for representing individual pixels in the image
+
 #include "pixel.h"
 
  pixel::pixel(int r, int g, int b) 
