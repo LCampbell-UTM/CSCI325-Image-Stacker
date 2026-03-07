@@ -2,7 +2,7 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra
 TARGET = imagestacker
-SOURCES = main.cpp stacker.cpp image.cpp pixel.cpp
+SOURCES = main.cpp stacker.cpp pixel.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(TARGET)

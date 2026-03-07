@@ -1,38 +1,45 @@
 // Authors: Lane Campbell and Blaine Smith
-// File: pixel.cpp
-// Last Modified: 2026-03-05
-// Purpose: Define the stacker class used to combine multiple images by averaging their pixel values
+// File: stacker.h
+// Purpose: Implements the stacker class which reads multiple images and averages their pixels
 
 #ifndef STACKER_H
 #define STACKER_H
 
-#include "image.h"
-#include <vector>
 #include <string>
+#include <vector>
+#include "pixel.h"
 
 /**
  * @class stacker
- * @brief Stores a group of images and combines them by averaging the RGB
- * values of the pixels at the same position.
+ * @brief Represents an image created by stacking multiple PPM images
+ * and averaging their pixel values. Used to just stack. Removed image
+ * class after I read the instructions again.
  */
 class stacker
 {
 private:
-    std::vector<image> images; // vector to hold the images that will be stacked
+    std::string magic_number;
+    int width;
+    int height;
+    int max_color;
+
+    std::vector<pixel> pixels;
 
 public:
 
-    /**
-     * @brief Loads an image from a file and adds it to the list.
-     * @param filename Name of the image file to load.
-     */
-    void addImage(const std::string& filename);
+    stacker();
 
     /**
      * @brief Averages the pixels of all stored images.
      * @return The stacked image.
-     */    
-    image stack();
+     */
+    bool stack(const std::string& baseName, int numImages);
+
+    /**
+     * @brief Save this image to a P3 PPM file
+     * @param filename File to save
+     */
+    void saveFile(const std::string& filename);
 };
 
 #endif

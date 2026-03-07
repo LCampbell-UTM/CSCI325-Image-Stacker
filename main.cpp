@@ -1,6 +1,5 @@
 // Authors: Lane Campbell and Blaine Smith
 // File: main.cpp
-// Last Modified: 2026-03-05
 // Purpose: Run the image stacking program
 
 #include "stacker.h"
@@ -21,9 +20,13 @@ int main()
     std::string baseName;
     int numImages;
 
-    std::cout << "Please enter the image you wish to stack: "; // just  copying the format of the output from the assignment page
+
+    // just  copying the format of the output from the assignment page
+    // get baseName
+    std::cout << "Please enter the image you wish to stack: "; 
     std::cin >> baseName;
 
+    // get numImages
     std::cout << "Please enter the number of images: ";
     std::cin >> numImages;
 
@@ -31,38 +34,16 @@ int main()
 
     std::cout << "Stacking images:\n";
 
-    for (int i = 1; i <= numImages; i++)
+    // perform the stacking
+    if (s.stack(baseName, numImages))
     {
-        std::ostringstream filename;
-        filename << baseName << "/" << baseName << "_";
+        std::string outputFile = baseName + ".ppm"; // output filename
 
-        // adds the _### at the end of the filename
-        if (i < 10) 
-        {
-            filename << "00" << i;
-        }
-        else if (i>= 10 && i < 100)
-        {
-            filename << "0" << i;
-        }
-        else
-        {
-            filename << i;
-        }
-        filename << ".ppm";
+        s.saveFile(outputFile); // save the stacked image
 
-        std::cout << "     " << filename.str() << "\n"; // gives the indentation
-
-        s.addImage(filename.str()); // adds the image to the stacker
+        std::cout << "\nStacking succeeded.\n";
+        std::cout << "Output written to: " << outputFile << std::endl;
     }
-
-    image result = s.stack(); // stores result as anew image
-
-    std::string outputFile = baseName + ".ppm"; // names the cleaned file baseName.ppm
-    result.saveFile(outputFile);
-
-    std::cout << "\nStacking succeeded.\n";
-    std::cout << "Output written to: " << outputFile << std::endl;
 
     return 0;
 }
