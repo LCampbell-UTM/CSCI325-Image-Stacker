@@ -102,9 +102,9 @@ bool image::loadFile(const std::string& filename)
 
     file >> maxColor;
 
-    pixels.resize(width * height);
+    pixels.resize(width * height); // sets the size of the vector to hold all the pixels
 
-    for (int i = 0; i < width * height; i++) 
+    for (int i = 0; i < width * height; i++) // loop through each pixel
     {
         int r, g, b; //create the integers
         file >> r >> g >> b; // extraction operator to assign values to the integers
@@ -116,6 +116,10 @@ bool image::loadFile(const std::string& filename)
     return true;
 }
 
+/**
+ * @brief Save this image to a P3 PPM file
+ * @param filename File to save
+ */
 void image::saveFile(const std::string& filename) const 
 {
     std::ofstream file(filename);

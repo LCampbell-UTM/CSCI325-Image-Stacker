@@ -10,6 +10,12 @@
 #include <vector>
 #include <sstream>
 
+
+/**
+ * @brief Runs the image stacking program.
+ * Prompts the user for the image base name and number of images,
+ * loads them into the stacker, and outputs the stacked result.
+ */
 int main()
 {
     std::string baseName;
@@ -30,7 +36,7 @@ int main()
         std::ostringstream filename;
         filename << baseName << "/" << baseName << "_";
 
-        // adds the _### at the end of the filename. Since the test files only use 3 digits, this should work for up to 999 images.
+        // adds the _### at the end of the filename
         if (i < 10) 
         {
             filename << "00" << i;
@@ -52,8 +58,8 @@ int main()
 
     image result = s.stack(); // stores result as anew image
 
-    std::string outputFile = baseName + ".ppm"; 
-    result.saveFile(outputFile); // names the cleaned file baseName.ppm
+    std::string outputFile = baseName + ".ppm"; // names the cleaned file baseName.ppm
+    result.saveFile(outputFile);
 
     std::cout << "\nStacking succeeded.\n";
     std::cout << "Output written to: " << outputFile << std::endl;
