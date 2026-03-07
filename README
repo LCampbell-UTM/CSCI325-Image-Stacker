@@ -1,0 +1,24 @@
+Introduction:
+
+This program is intended to serve as a PPM image stacker. 
+
+Overall, we needed a program that can read in N vectors, one for each noisy PPM image. 
+
+Then the program needed to parse each vector, totaling the color values for each pixel, and finally divide by N for the average color value in each pixel. 
+With three color values (RGB) per pixel, we needed three average outputs per pixel, then to put them into a final vector representing the cleaned image.
+
+I ended up creating sum vectors to total the R,G, and B values for each pixel, then filling the final vector with that value divided by the 
+total number of images.
+
+I initially created an image class that fed into the stacker class, but upon rereading the instructions, realized that the variables I'd used there needed to be utilized in the stacker class itself.
+
+To run:
+
+make imagestacker
+.\imagestacker
+
+*enter base name of file*
+*enter number of images*
+
+I will preface this by saying I haven't run it on school computers at all, but it works for me ¯\_(ツ)_/¯ 
+
